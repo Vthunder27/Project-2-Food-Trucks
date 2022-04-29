@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/foodTruckListFragment">
+
+    <fragment
+        android:id="@+id/foodTruckListFragment"
+        android:name="com.ecs198f.foodtrucks.FoodTruckListFragment"
+        android:label="fragment_food_truck_list"
+        tools:layout="@layout/fragment_food_truck_list" />
+    <fragment
+        android:id="@+id/foodTruckDetailFragment"
+        android:name="com.ecs198f.foodtrucks.FoodTruckDetailFragment"
+        android:label="fragment_food_truck_detail"
+        tools:layout="@layout/fragment_food_truck_detail" />
+</navigation>
