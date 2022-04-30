@@ -56,7 +56,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/foodTruckListItemLocationIcon"
+                android:id="@+id/foodTruckLocationIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -67,14 +67,14 @@
                 app:srcCompat="@drawable/ic_baseline_location_on_24" />
 
             <ImageView
-                android:id="@+id/foodTruckListItemTimeIcon"
+                android:id="@+id/foodTruckTimeIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:contentDescription="time icon"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/foodTruckListItemLocationIcon"
+                app:layout_constraintTop_toBottomOf="@+id/foodTruckLocationIcon"
                 app:srcCompat="@drawable/ic_baseline_access_time_24" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -83,9 +83,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="Location"
-                app:layout_constraintBottom_toBottomOf="@+id/foodTruckListItemLocationIcon"
-                app:layout_constraintStart_toEndOf="@+id/foodTruckListItemLocationIcon"
-                app:layout_constraintTop_toTopOf="@+id/foodTruckListItemLocationIcon" />
+                app:layout_constraintBottom_toBottomOf="@+id/foodTruckLocationIcon"
+                app:layout_constraintStart_toEndOf="@+id/foodTruckLocationIcon"
+                app:layout_constraintTop_toTopOf="@+id/foodTruckLocationIcon" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/foodTruckListItemTime"
@@ -93,9 +93,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="Time"
-                app:layout_constraintBottom_toBottomOf="@+id/foodTruckListItemTimeIcon"
-                app:layout_constraintStart_toEndOf="@+id/foodTruckListItemTimeIcon"
-                app:layout_constraintTop_toTopOf="@+id/foodTruckListItemTimeIcon" />
+                app:layout_constraintBottom_toBottomOf="@+id/foodTruckTimeIcon"
+                app:layout_constraintStart_toEndOf="@+id/foodTruckTimeIcon"
+                app:layout_constraintTop_toTopOf="@+id/foodTruckTimeIcon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

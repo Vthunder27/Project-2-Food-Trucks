@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ecs198f.foodtrucks.databinding.ActivityMainBinding
 import java.time.LocalDateTime
 
 class FoodTruckListFragment : Fragment() {
@@ -15,20 +14,29 @@ class FoodTruckListFragment : Fragment() {
         FoodTruck(
             "1",
             "Shah's Halal",
-            R.drawable.shah_s_halal,
+            "https://android-course-ucd.web.app/img/food-trucks/Shah's_Halal.png",
             3,
             "Silo Patio",
-            LocalDateTime.of(2021, 10, 4, 11, 0, 0, 0),
-            LocalDateTime.of(2021, 10, 4, 16, 0, 0, 0),
+            LocalDateTime.of(2021, 10, 19, 11, 0, 0, 0),
+            LocalDateTime.of(2021, 10, 19, 16, 0, 0, 0),
         ),
         FoodTruck(
             "2",
             "Hefty Gyros",
-            R.drawable.hefty_gyros,
+            "https://android-course-ucd.web.app/img/food-trucks/Hefty_Gyros.png",
+            2,
+            "West Quad",
+            LocalDateTime.of(2021, 10, 19, 11, 0, 0, 0),
+            LocalDateTime.of(2021, 10, 19, 16, 0, 0, 0),
+        ),
+        FoodTruck(
+            "4",
+            "Star Ginger",
+            "https://android-course-ucd.web.app/img/food-trucks/StarGinger.jpg",
             2,
             "West Quad",
             LocalDateTime.of(2021, 10, 4, 11, 0, 0, 0),
-            LocalDateTime.of(2021, 10, 4, 15, 0, 0, 0),
+            LocalDateTime.of(2021, 10, 4, 16, 0, 0, 0),
         )
     )
 
@@ -37,15 +45,12 @@ class FoodTruckListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        activity?.title = "Food Trucks"
         val view = inflater.inflate(R.layout.fragment_food_truck_list, container, false)
         view.findViewById<RecyclerView>(R.id.foodTruckListRecyclerView).apply {
             layoutManager = LinearLayoutManager(context)
             adapter = FoodTruckListRecyclerViewAdapter(foodTrucks)
         }
         return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 }

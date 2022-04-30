@@ -5,55 +5,70 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FoodTruckDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FoodTruckDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val args: FoodTruckDetailFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val foodItems = listOf(
+        FoodItem(
+            "Thai BBQ Chicken",
+            "$12.00 (tax included)",
+            "Rice bowl combo with salad (400 cal)"
+        ),
+        FoodItem(
+            "Thai BBQ Chicken",
+            "$12.00 (tax included)",
+            "Rice bowl combo with salad (400 cal)"
+        ),
+        FoodItem(
+            "Thai BBQ Chicken",
+            "$12.00 (tax included)",
+            "Rice bowl combo with salad (400 cal)"
+        ),
+        FoodItem(
+            "Thai BBQ Chicken",
+            "$12.00 (tax included)",
+            "Rice bowl combo with salad (400 cal)"
+        ),
+        FoodItem(
+            "Thai BBQ Chicken",
+            "$12.00 (tax included)",
+            "Rice bowl combo with salad (400 cal)"
+        )
+
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food_truck_detail, container, false)
+        val view = inflater.inflate(R.layout.fragment_food_truck_detail, container, false)
+        view.findViewById<RecyclerView>(R.id.foodItemListRecyclerView).apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = FoodItemListRecyclerViewAdapter(foodItems)
+        }
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FoodTruckDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FoodTruckDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        activity?.title = args.foodTruck.name
+        view.apply {
+            val imageView = findViewById<ImageView>(R.id.foodTruckListItemImage)
+            Glide.with(this).load(args.foodTruck.imageUrl).into(imageView)
+            findViewById<TextView>(R.id.foodTruckListItemLocation).text =
+                args.foodTruck.location
+            findViewById<TextView>(R.id.foodTruckPriceLevel).text =
+                "$".repeat(args.foodTruck.priceLevel)
+            findViewById<TextView>(R.id.foodTruckListItemTime).text =
+                args.foodTruck.formattedTimeInterval
+        }
     }
 }
