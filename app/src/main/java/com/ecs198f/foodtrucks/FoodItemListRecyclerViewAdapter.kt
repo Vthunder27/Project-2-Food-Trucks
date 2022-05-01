@@ -31,12 +31,12 @@ class FoodItemListRecyclerViewAdapter(private var foodItems: List<FoodItem>) :
             holder.binding.apply {
                 foodItemName.text = it.name
                 var taxstr: String
-                taxstr = "(tax included)"
+                taxstr = " (tax included)"
 
                 when(it.taxIncluded)
                 {
-                    true -> foodItemPrice.text = it.price + taxstr
-                    false -> foodItemPrice.text = it.price
+                    true -> foodItemPrice.text = '$' + it.price + taxstr
+                    false -> foodItemPrice.text = '$' +it.price
                 }
 
                 foodItemDescription.text = it.description
