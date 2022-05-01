@@ -7,10 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ecs198f.foodtrucks.databinding.FoodTruckListItemBinding
 
-class FoodTruckListRecyclerViewAdapter(private val items: List<FoodTruck>) :
+class FoodTruckListRecyclerViewAdapter(private var items: List<FoodTruck>) :
     RecyclerView.Adapter<FoodTruckListRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: FoodTruckListItemBinding) : RecyclerView.ViewHolder(binding.root)
+
+    fun updateFoodTruck(items: List<FoodTruck>)
+    {
+        this.items = items
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = FoodTruckListItemBinding.inflate(

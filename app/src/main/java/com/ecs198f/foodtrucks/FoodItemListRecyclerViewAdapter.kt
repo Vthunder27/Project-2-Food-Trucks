@@ -11,6 +11,12 @@ class FoodItemListRecyclerViewAdapter(private var foodItems: List<FoodItem>) :
 
     class ViewHolder(val binding: FoodListItemBinding): RecyclerView.ViewHolder(binding.root)
 
+    fun updateFoodItem(items: List<FoodItem>)
+    {
+        this.foodItems = items
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = FoodListItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -24,11 +30,21 @@ class FoodItemListRecyclerViewAdapter(private var foodItems: List<FoodItem>) :
         foodItems[position].let {
             holder.binding.apply {
                 foodItemName.text = it.name
-                foodItemPrice.text = it.price
+                var taxstr: String
+                taxstr = "(tax included)"
+
+                when(it.taxIncluded)
+                {
+                    true -> foodItemPrice.text = it.price + taxstr
+                    false -> foodItemPrice.text = it.price
+                }
+
                 foodItemDescription.text = it.description
             }
         }
     }
+
+
 
     override fun getItemCount() = foodItems.size
 }

@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CA/Studying/2022Spring/ECS198F/Project-2-Food-Trucks/app/src/main/res/layout/activity_main.xml" value="0.29981884057971014" />
+        <entry key="..\:/CA/Studying/2022Spring/ECS198F/Project-2-Food-Trucks/app/src/main/res/layout/food_list_item.xml" value="0.29981884057971014" />
+        <entry key="..\:/CA/Studying/2022Spring/ECS198F/Project-2-Food-Trucks/app/src/main/res/layout/food_truck_list_item.xml" value="0.29981884057971014" />
+        <entry key="..\:/CA/Studying/2022Spring/ECS198F/Project-2-Food-Trucks/app/src/main/res/layout/fragment_food_truck_detail.xml" value="0.29981884057971014" />
+        <entry key="..\:/CA/Studying/2022Spring/ECS198F/Project-2-Food-Trucks/app/src/main/res/layout/fragment_food_truck_list.xml" value="0.29981884057971014" />
         <entry key="..\:/Repos/ECS198F-AndroidCourse2022/FoodTruckApp-Stage2StarterCode/app/src/main/res/layout/activity_main.xml" value="0.22327898550724637" />
         <entry key="..\:/Repos/ECS198F-AndroidCourse2022/FoodTruckApp-Stage2StarterCode/app/src/main/res/layout/food_truck_list_item.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/visha/Downloads/FoodTruckApp-Stage2Starter-main/FoodTruckApp-Stage2Starter-main/app/src/main/res/layout/activity_main.xml" value="0.22" />

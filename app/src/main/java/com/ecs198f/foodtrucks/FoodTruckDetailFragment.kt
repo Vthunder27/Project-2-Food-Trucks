@@ -11,40 +11,24 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class FoodTruckDetailFragment : Fragment() {
     private val args: FoodTruckDetailFragmentArgs by navArgs()
 
-    private val foodItems = listOf(
-        FoodItem(
-            "Thai BBQ Chicken",
-            "$12.00 (tax included)",
-            "Rice bowl combo with salad (400 cal)"
-        ),
-        FoodItem(
-            "Thai BBQ Chicken",
-            "$12.00 (tax included)",
-            "Rice bowl combo with salad (400 cal)"
-        ),
-        FoodItem(
-            "Thai BBQ Chicken",
-            "$12.00 (tax included)",
-            "Rice bowl combo with salad (400 cal)"
-        ),
-        FoodItem(
-            "Thai BBQ Chicken",
-            "$12.00 (tax included)",
-            "Rice bowl combo with salad (400 cal)"
-        ),
-        FoodItem(
-            "Thai BBQ Chicken",
-            "$12.00 (tax included)",
-            "Rice bowl combo with salad (400 cal)"
-        )
+    val service = Retrofit.Builder()
+        .baseUrl("https://api.foodtruck.schedgo.com")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(FoodTruckService::class.java)
+    private val foodItems = listOf<FoodItem>()
+    val myadapter =FoodItemListRecyclerViewAdapter(foodItems)
 
-    )
-
-    override fun onCreateView(
+        override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -52,8 +36,23 @@ class FoodTruckDetailFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_food_truck_detail, container, false)
         view.findViewById<RecyclerView>(R.id.foodItemListRecyclerView).apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = FoodItemListRecyclerViewAdapter(foodItems)
+            adapter = myadapter
         }
+
+            service.getFoodItem(args.foodTruck.id).enqueue(object : Callback<List<FoodItem>>{
+                override fun onResponse(
+                    call: Call<List<FoodItem>>,
+                    response: Response<List<FoodItem>>
+                ) {
+                    myadapter.updateFoodItem(response.body()!!)
+                }
+
+                override fun onFailure(call: Call<List<FoodItem>>, t: Throwable) {
+                    throw t
+                }
+
+            })
+
         return view
     }
 
